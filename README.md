@@ -1,6 +1,9 @@
-# Music Player for Mobile
+# Music Player for Mobile.  
+#### [Deployed Link: ](https://brave-galileo-3ff47e.netlify.com/)
 
-## This is a music player coding for mobile using Vue. All css was coding by myself and the whole project were built from scartch. Design was made by impekable from https://dribbble.com/shots/4660545-Concept-Music-App
+#### This is a music player coding for mobile using Vue. All css was coding by myself and the whole project were built from scartch. 
+
+#### Design was made by impekable from https://dribbble.com/shots/4660545-Concept-Music-App
 
 ![Design](https://cdn.dribbble.com/users/2933/screenshots/4660545/ezgif.com-video-to-gif-long.gif)
 

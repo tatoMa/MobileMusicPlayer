@@ -1,22 +1,22 @@
 <template>
   <div>
-    <h2 class="title">Popular Radio Stations</h2>
+    <h2 class="title">Trending Albums</h2>
     <div class="radio-station-container">
       <div v-for="radio in data" :key="radio.url">
-        <PopularRadioStation :radio=radio />
+        <TrendingAlbum :radio=radio />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PopularRadioStation from './PopularRadioStation.vue';
+import TrendingAlbum from './TrendingAlbum.vue';
 
 export default {
   components: {
-    PopularRadioStation,
+    TrendingAlbum,
   },
-  name: 'PopularRadioStations',
+  name: 'TrendingAlbums',
   data() {
     return {
       data: [
@@ -51,10 +51,10 @@ export default {
 .title{
   font-weight: 400;
   margin-left: 20px;
-  margin-top:20px;
+  margin-bottom: 0px;
 }
 .radio-station-container{
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   overflow-x: auto;
   height: 230px;
