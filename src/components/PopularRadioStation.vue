@@ -47,6 +47,7 @@ export default {
         width:120px;
         border-radius: 50%;
         z-index: 100;
+        object-fit: cover;
       }
       .title{
         margin-top: 13px;

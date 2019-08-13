@@ -40,6 +40,26 @@ export default {
           title: 'Pop Band',
           follower: 323456,
         },
+        {
+          url: 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          title: 'Rock Band',
+          follower: 432124,
+        },
+        {
+          url: 'https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          title: 'Jazz Band',
+          follower: 233223,
+        },
+        {
+          url: 'https://images.pexels.com/photos/2167139/pexels-photo-2167139.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          title: 'Piano',
+          follower: 24666,
+        },
+        {
+          url: 'https://images.pexels.com/photos/1918160/pexels-photo-1918160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          title: 'Pop Band',
+          follower: 323456,
+        },
       ],
     };
   },

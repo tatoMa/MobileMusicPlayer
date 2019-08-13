@@ -33,7 +33,7 @@ export default {
   height: 110px;
   margin-top:60px;
   text-align: center;
-  box-shadow: 0px 0px 30px #C4E2FF;
+  box-shadow: 0px 0px 15px #C4E2FF;
   border-radius: 10px;
   position: relative;
   margin-left: 13px;
@@ -47,6 +47,7 @@ export default {
         width:90px;
         border-radius: 50%;
         z-index: 100;
+        object-fit: cover;
       }
       .title{
         margin-top: 9px;

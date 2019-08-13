@@ -2,6 +2,8 @@
   <div class="home">
     <PopularRadioStations/>
     <TrendingAlbums/>
+    <TrendingAlbums/>
+    <TrendingAlbums style="margin-bottom:150px"/>
     <div class="bottom">
       <PlayerBottom/>
       <FooterBottom/>
