@@ -1,6 +1,8 @@
 # Music Player for Mobile
 
-## This is a music player design for mobile using Vue. All css was coding by myself and the whole project were built from scartch. 
+## This is a music player coding for mobile using Vue. All css was coding by myself and the whole project were built from scartch. Design was made by impekable from https://dribbble.com/shots/4660545-Concept-Music-App
+
+![Design](https://cdn.dribbble.com/users/2933/screenshots/4660545/ezgif.com-video-to-gif-long.gif)
 
 - [x] generate project from vuecli
 - [x] setup router and delete redundant
