@@ -1,5 +1,5 @@
 # Music Player for Mobile.  
-#### [Deployed Link: ](https://brave-galileo-3ff47e.netlify.com/)
+### [Deployed Link: https://brave-galileo-3ff47e.netlify.com/](https://brave-galileo-3ff47e.netlify.com/)
 
 #### This is a music player coding for mobile using Vue. All css was coding by myself and the whole project were built from scartch. 
 
