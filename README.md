@@ -1,4 +1,18 @@
-# client
+# Music Player for Mobile
+
+## This is a music player design for mobile using Vue. All css was coding by myself and the whole project were built from scartch. 
+
+- [x] generate project from vuecli
+- [x] setup router and delete redundant
+- [x] restructure folders and components
+- [ ] main page
+    - [x] create radio section
+    - [ ] create trending section
+    - [ ] create player section
+- [ ] player page
+    - [ ] player components
+    - [ ] animation and transition
+- [ ] add backend
 
 ## Project setup
 ```
