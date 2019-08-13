@@ -14,6 +14,7 @@
     - [x] create radio section
     - [ ] create trending section
     - [ ] create player section
+- [x] link to Netlify CIDI pipeline
 - [ ] player page
     - [ ] player components
     - [ ] animation and transition
