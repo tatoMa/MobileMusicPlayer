@@ -2,9 +2,9 @@
     <div class="player-bottom">
         <div class="player-container">
             <div class="cover">
-                <img class="cover move" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
+                <img class="cover change-state" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
             </div>
-            <div class="info">
+            <div class="info change-state">
                 <div class="details">
                     <div class="title">this is a song</div>
                     <div class="album">this is the album</div>
@@ -53,11 +53,11 @@ export default {
                 width: 70px;
                 border-radius: 50%;
             }
-            .move{
-                animation: cover-move 2s linear forwards, rotation-big 5s linear 2s infinite;
+            .change-state{
+                animation: cover-move 1s linear forwards, cover-rotation-big 5s linear 1s infinite;
             }
             .active{
-                animation: rotation-small 5s linear infinite;
+                animation: cover-rotation-small 5s linear infinite;
             }
         }
         .buttons{
@@ -104,15 +104,20 @@ export default {
                 }
             }
         }
+        .change-state{
+            .details{
+                animation: title-move 1s forwards;
+            }
+        }
     }
 }
-@keyframes rotation-small {
+@keyframes cover-rotation-small {
     0%   {transform: rotate(0deg);}
     100% {transform: rotate(360deg)}
 }
-@keyframes rotation-big {
-    0%   {transform: rotate(180deg) scale(3);}
-    100% {transform: rotate(540deg) scale(3)}
+@keyframes cover-rotation-big {
+    0%   {transform: rotate(90deg) scale(3);}
+    100% {transform: rotate(450deg) scale(3)}
 }
 @keyframes progress{
     0%   {width: 0%;}
@@ -131,7 +136,21 @@ export default {
         top: -400px;
         left: 150px;
         position: absolute;
-        transform: rotate(180deg) scale(3);
+        transform: rotate(90deg) scale(3);
+    }
+}
+@keyframes title-move {
+    0% {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    100% {
+        position: absolute;
+        text-align: center;
+        top: -120px;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
     }
 }
 </style>

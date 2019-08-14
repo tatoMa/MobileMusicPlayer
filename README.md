@@ -16,6 +16,8 @@
     - [ ] create player section
 - [x] link to Netlify CIDI pipeline
 - [ ] player page
+    - [x] animation for cover wheel
+    - [ ] animation for the player page
     - [ ] player components
     - [ ] animation and transition
 - [ ] add backend
