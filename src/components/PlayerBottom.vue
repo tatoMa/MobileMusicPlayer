@@ -1,5 +1,5 @@
 <template>
-    <div class="player-bottom">
+    <div class="player-bottom change-state">
         <div class="player-container">
             <div class="cover">
                 <img class="cover change-state" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
@@ -19,6 +19,13 @@
             <div class="buttons">
                 <span class="mdi mdi-pause"></span>
                 <span class="mdi mdi-skip-next"></span>
+            </div>
+            <div class="buttons-group change-buttons">
+                <span class="mdi mdi-loop"></span>
+                <span class="mdi mdi-skip-backward"></span>
+                <span class="mdi mdi-pause"></span>
+                <span class="mdi mdi-skip-forward"></span>
+                <span class="mdi mdi-shuffle"></span>
             </div>
         </div>
     </div>
@@ -66,6 +73,20 @@ export default {
                 font-size: 38px
             }
         }
+        .buttons-group{
+            display: none;
+            text-align: center;
+            width: 100%;
+            .mdi{
+                font-size: 38px;
+                padding-right: 13px;
+                padding-left: 13px;
+            }
+        }
+        .change-buttons{
+            display:block;
+            animation: buttons-group-move 0.2s forwards 1s;
+        }
         .info{
             width: 48%;
             .details{
@@ -106,10 +127,20 @@ export default {
         }
         .change-state{
             .details{
-                animation: title-move 1s forwards;
+                animation: title-move 1s ease-in forwards;
+            }
+            .progress-bar{
+                animation: progress-move 1s ease-in forwards;
             }
         }
     }
+}
+.change-state{
+    background-color: rgba(255, 255, 255, 0);
+    height: 90px;
+    width: calc(100%-20px);
+    border-radius: 50px;
+    box-shadow: 0 0 0;
 }
 @keyframes cover-rotation-small {
     0%   {transform: rotate(0deg);}
@@ -144,6 +175,7 @@ export default {
         position: absolute;
         top: 0px;
         left: 0px;
+        transform: scale(1);
     }
     100% {
         position: absolute;
@@ -151,6 +183,37 @@ export default {
         top: -120px;
         left: 50%;
         transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+@keyframes progress-move {
+    0% {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: scale(1);
+    }
+    100% {
+        position: absolute;
+        text-align: center;
+        top: -50px;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+@keyframes buttons-group-move {
+    0% {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0
+    }
+    100% {
+        position: absolute;
+        op: -120px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
     }
 }
 </style>
