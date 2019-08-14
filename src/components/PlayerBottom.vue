@@ -2,7 +2,7 @@
     <div class="player-bottom">
         <div class="player-container">
             <div class="cover">
-                <img class="cover active" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
+                <img class="cover move" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
             </div>
             <div class="info">
                 <div class="details">
@@ -32,9 +32,10 @@ export default {
 
 <style lang="scss" scoped>
 .player-bottom{
+    margin:0 10px;
     background-color: #FFFFFF;
     height: 90px;
-    width: 100%;
+    width: calc(100%-20px);
     border-radius: 50px;
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05);
     .player-container{
@@ -45,13 +46,18 @@ export default {
         align-items: center;
         .cover{
             margin: 5px;
+            position: relative;
+            // animation: cover-move 1s linear alternate infinite;
             img{
                 height: 70px;
                 width: 70px;
                 border-radius: 50%;
             }
+            .move{
+                animation: cover-move 2s linear forwards, rotation-big 5s linear 2s infinite;
+            }
             .active{
-                animation: rotation 5s linear infinite
+                animation: rotation-small 5s linear infinite;
             }
         }
         .buttons{
@@ -100,12 +106,32 @@ export default {
         }
     }
 }
-@keyframes rotation {
+@keyframes rotation-small {
     0%   {transform: rotate(0deg);}
     100% {transform: rotate(360deg)}
+}
+@keyframes rotation-big {
+    0%   {transform: rotate(180deg) scale(3);}
+    100% {transform: rotate(540deg) scale(3)}
 }
 @keyframes progress{
     0%   {width: 0%;}
     100% {width: 100%}
+}
+@keyframes cover-move {
+    0%   {
+        // position: absolute;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        // position: absolute;
+        top: -400px;
+        left: 150px;
+        position: absolute;
+        transform: rotate(180deg) scale(3);
+    }
 }
 </style>

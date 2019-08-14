@@ -1,12 +1,17 @@
 <template>
   <div class="home">
-    <PopularRadioStations/>
-    <TrendingAlbums/>
-    <TrendingAlbums/>
-    <TrendingAlbums style="margin-bottom:150px"/>
-    <div class="bottom">
-      <PlayerBottom/>
-      <FooterBottom/>
+    <div class="home-main">
+      <PopularRadioStations class="inactive"/>
+      <TrendingAlbums class="inactive"/>
+      <TrendingAlbums class="inactive"/>
+      <TrendingAlbums class="inactive" style="margin-bottom:150px"/>
+      <div class="bottom">
+        <PlayerBottom/>
+        <FooterBottom class="inactive"/>
+      </div>
+    </div>
+    <div class="home-player">
+
     </div>
   </div>
 </template>
@@ -35,6 +40,14 @@ export default {
   width: 100%;
   z-index: 5;
   background-color:#FAFAFA;
+}
+.inactive{
+  animation: hide 0.5s linear forwards;
+  // opacity:0;
+}
+@keyframes hide{
+    0%   {opacity:100}
+    100% {opacity:0}
 }
 // .home{
 //   display: flex;
