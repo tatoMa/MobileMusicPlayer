@@ -360,12 +360,13 @@ label.main:hover:before {
 
 .list {
   border-spacing: 0px 2px;
-  width: 342px;
+  width: 100%;
+//   width: 342px;
   visibility: hidden;
   opacity: 0;
   position: absolute;
   top: 378px;
-  left: 12px;
+  left: 0px;
   transform-origin: 0% 0%;
   transform: scale(0.1, 0.1);
   transition: all 0.3s ease-in;
@@ -399,7 +400,8 @@ label.main:hover:before {
 
 .screen > #magicButton:checked ~ .list {
   top: 192px;
-  left: 12px;
+  left: 0px;
+  height: calc(100vh - 222px);
   opacity: 1;
   visibility: visible;
   transform: scale(1, 1);
@@ -547,8 +549,10 @@ td > #heart8:checked ~ label.zmr:before {
 }
 
 .screen > #magicButton:checked ~ .info {
-  top: 66px;
-  left: 126px;
+  top: 80px;
+//   left: 126px;
+  left: 50%;
+  transform: translate(-40%, -50%);
   text-align: left;
   transition: all 0.3s ease-in;
 }
