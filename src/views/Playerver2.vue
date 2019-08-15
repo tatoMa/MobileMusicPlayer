@@ -115,7 +115,7 @@ export default {
   mounted() {
     this.audio = document.getElementById('audio');
     this.playpause = document.getElementById('play');
-    // console.log(this.audio);
+    console.log(this.audio.duration);
     // this.audio.play();
   },
   methods: {
@@ -123,6 +123,8 @@ export default {
       if (this.audio.paused || this.audio.ended) {
         this.playpause.title = 'Pause';
         this.audio.play();
+        console.log(this.audio.currentTime);
+        console.log(this.audio.duration);
       } else {
         this.playpause.title = 'Play';
         this.audio.pause();
