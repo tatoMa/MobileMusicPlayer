@@ -6,6 +6,7 @@
 
 <style lang="scss">
 @import url(https://cdn.materialdesignicons.com/3.9.97/css/materialdesignicons.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
 body {
   box-sizing: border-box;
   padding: 0;
