@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Playerver2 from './views/Playerver2.vue';
+// import Playerver2 from './views/Playerver2.vue';
+import Playerver2 from './views/Player.vue';
 
 Vue.use(Router);
 

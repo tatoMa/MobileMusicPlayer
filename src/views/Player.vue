@@ -1,32 +1,42 @@
 <template>
-    <div class="player-bottom change-state">
-        <div class="player-container">
-            <div class="cover">
-                <img class="cover change-state" src='https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt="cover">
+    <div>
+        <div class="audio green-audio-player">
+            <div class="loading">
+                <div class="spinner"></div>
             </div>
-            <div class="info change-state">
-                <div class="details">
-                    <div class="title">this is a song</div>
-                    <div class="album">this is the album</div>
+            <div class="play-pause-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+                <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
+                </svg>
+            </div>
+
+            <div class="controls">
+                <span class="current-time">0:00</span>
+                <div class="slider" data-direction="horizontal">
+                <div class="progress">
+                    <div class="pin" id="progress-pin" data-method="rewind"></div>
                 </div>
-                <div class="progress-bar">
-                    <div class="meter">
-                        <span></span>
-                        <!-- <span style="width: 50%"></span> -->
+                </div>
+                <span class="total-time">0:00</span>
+            </div>
+
+            <div class="volume">
+                <div class="volume-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="#566574" fill-rule="evenodd" d="M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z" id="speaker"/>
+                </svg>
+                </div>
+                <div class="volume-controls hidden">
+                <div class="slider" data-direction="vertical">
+                    <div class="progress">
+                    <div class="pin" id="volume-pin" data-method="changeVolume"></div>
                     </div>
                 </div>
+                </div>
             </div>
-            <div class="buttons">
-                <span class="mdi mdi-pause"></span>
-                <span class="mdi mdi-skip-next"></span>
-            </div>
-            <div class="buttons-group change-buttons">
-                <span class="mdi mdi-loop"></span>
-                <span class="mdi mdi-skip-backward"></span>
-                <span class="mdi mdi-pause"></span>
-                <span class="mdi mdi-skip-forward"></span>
-                <span class="mdi mdi-shuffle"></span>
-            </div>
+
+            <audio crossorigin>
+            <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3" type="audio/mpeg">            </audio>
         </div>
     </div>
 </template>
@@ -51,13 +61,13 @@ export default {
     const draggableClasses = ['pin'];
     let currentlyDragged = null;
 
-    window.addEventListener('mousedown', (event) => {
+    window.addEventListener('mousedown', function(event) {
       if (!isDraggable(event.target)) return false;
 
       currentlyDragged = event.target;
       const handleMethod = currentlyDragged.dataset.method;
 
-      this.addEventListener('mousemove', window[handleMethod], false);
+      window.addEventListener('mousemove', window[handleMethod], false);
 
       window.addEventListener('mouseup', () => {
         currentlyDragged = false;
@@ -213,182 +223,148 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.player-bottom{
-    margin:0 10px;
-    background-color: #FFFFFF;
-    height: 90px;
-    width: calc(100%-20px);
-    border-radius: 50px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05);
-    .player-container{
+.audio.green-audio-player {
+  width: 100%;
+  min-width: 300px;
+  height: 56px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-radius: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: #fff;
+  .play-pause-btn {
+    display: none;
+    cursor: pointer;
+  }
+  .spinner {
+    width: 18px;
+    height: 18px;
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/loading.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: spin 0.4s linear infinite;
+  }
+  .slider {
+    flex-grow: 1;
+    background-color: #D8D8D8;
+    cursor: pointer;
+    position: relative;
+    .progress {
+      background-color: #000;
+      border-radius: inherit;
+      position: absolute;
+      pointer-events: none;
+      .pin {
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        background-color: #44BFA3;
+        position: absolute;
+        pointer-events: all;
+        box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.32);
+      }
+    }
+  }
+  .controls {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    color: #55606E;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 24px;
+    margin-right: 24px;
+    .slider {
+      margin-left: 16px;
+      margin-right: 16px;
+      border-radius: 2px;
+      height: 4px;
+      .progress {
+        width: 0;
         height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .cover{
-            margin: 5px;
-            position: relative;
-            // animation: cover-move 1s linear alternate infinite;
-            img{
-                height: 70px;
-                width: 70px;
-                border-radius: 50%;
-            }
-            .change-state{
-                animation: cover-move 1s linear forwards, cover-rotation-big 5s linear 1s infinite;
-            }
-            .active{
-                animation: cover-rotation-small 5s linear infinite;
-            }
+        .pin {
+          right: -8px;
+          top: -6px;
         }
-        .buttons{
-            margin-right: 15px;
-            .mdi{
-                font-size: 38px
-            }
+      }
+    }
+    span {
+      cursor: default;
+    }
+  }
+  .volume {
+    position: relative;
+    .volume-btn {
+      cursor: pointer;
+      &.open path {
+        fill: #44BFA3;
+      }
+    }
+    .volume-controls {
+      width: 30px;
+      height: 135px;
+      background-color: rgba(0, 0, 0, 0.62);
+      border-radius: 7px;
+      position: absolute;
+      left: -3px;
+      bottom: 52px;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      &.hidden {
+        display: none;
+      }
+      .slider {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        width: 6px;
+        border-radius: 3px;
+        .progress {
+          bottom: 0;
+          height: 100%;
+          width: 6px;
+          .pin {
+            left: -5px;
+            top: -8px;
+          }
         }
-        .buttons-group{
-            display: none;
-            text-align: center;
-            width: 100%;
-            .mdi{
-                font-size: 38px;
-                padding-right: 13px;
-                padding-left: 13px;
-            }
-        }
-        .change-buttons{
-            display:block;
-            animation: buttons-group-move 0.2s forwards 1s;
-        }
-        .info{
-            width: 48%;
-            .details{
-                .title{
-                    // margin-top: 13px;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    margin-bottom: 5px;
-                    color: #646464;
-                }
-                .album{
-                    font-size: .75rem;
-                    // margin-top: 4px;
-                    font-weight: 200;
-                    color: #646464;
-                    margin-bottom: 10px;
-                }
-            }
-            .progress-bar{
-                .meter {
-                    height: 3px;  /* Can be anything */
-                    position: relative;
-                    background: #EBEBEB;
-                    border-radius: 30px;
-                    padding: 0px;
-                }
-                .meter > span {
-                    width: 0%;
-                    display: block;
-                    height: 100%;
-                    border-radius: 30px;
-                    background-color: #50A5F4;
-                    position: relative;
-                    overflow: hidden;
-                    animation: progress 5s linear infinite
-                }
-            }
-        }
-        .change-state{
-            .details{
-                animation: title-move 1s ease-in forwards;
-            }
-            .progress-bar{
-                animation: progress-move 1s ease-in forwards;
-            }
-        }
+      }
     }
+  }
 }
-.change-state{
-    background-color: rgba(255, 255, 255, 0);
-    height: 90px;
-    width: calc(100%-20px);
-    border-radius: 50px;
-    box-shadow: 0 0 0;
+svg, img {
+  display: block;
 }
-@keyframes cover-rotation-small {
-    0%   {transform: rotate(0deg);}
-    100% {transform: rotate(360deg)}
+
+html, body {
+  height: 100%;
 }
-@keyframes cover-rotation-big {
-    0%   {transform: rotate(90deg) scale(3);}
-    100% {transform: rotate(450deg) scale(3)}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F8FFAE;
+  background: -webkit-linear-gradient(-65deg, #43C6AC, #F8FFAE);
+  background: linear-gradient(-65deg, #43C6AC, #F8FFAE);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-@keyframes progress{
-    0%   {width: 0%;}
-    100% {width: 100%}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(1turn);
+  }
 }
-@keyframes cover-move {
-    0%   {
-        // position: absolute;
-        top: 0px;
-        left: 0px;
-        position: absolute;
-        transform: rotate(0deg) scale(1);
-    }
-    100% {
-        // position: absolute;
-        top: -400px;
-        left: 150px;
-        position: absolute;
-        transform: rotate(90deg) scale(3);
-    }
-}
-@keyframes title-move {
-    0% {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        transform: scale(1);
-    }
-    100% {
-        position: absolute;
-        text-align: center;
-        top: -120px;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.5);
-    }
-}
-@keyframes progress-move {
-    0% {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        transform: scale(1);
-    }
-    100% {
-        position: absolute;
-        text-align: center;
-        top: -50px;
-        left: 50%;
-        width: 50%;
-        transform: translate(-50%, -50%) scale(1.5);
-    }
-}
-@keyframes buttons-group-move {
-    0% {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        opacity: 0
-    }
-    100% {
-        position: absolute;
-        op: -120px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 1;
-    }
-}
+
 </style>
