@@ -148,6 +148,7 @@ body {
   background: #ff564c;
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 @keyframes harlem {
